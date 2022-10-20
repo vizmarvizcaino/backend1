@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
-const config require('dotenv')
-config()
+import * as dotenv from 'dotenv';
+dotenv.config()
 
 console.log(process.env)
 
