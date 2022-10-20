@@ -1,11 +1,15 @@
 import { Sequelize } from "sequelize";
+const config require('dotenv')
+config()
+
+console.log(process.env)
 
 export const sequelize = new Sequelize(
-  'proyectsdb',
-  'postgres',
-  '69720700',
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
   {
-    host: 'localhost',
-    dialect: 'postgres'
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT
   }
 );
