@@ -1,5 +1,6 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 import { sequelize } from "../database/database.js";
+import { User } from "./User.js";
 
 export const Task = sequelize.define('task', {
   id: {
@@ -13,5 +14,14 @@ export const Task = sequelize.define('task', {
   done: {
     type: DataTypes.BOOLEAN,
     defaultValue: false
+  },
+  createdOn: {
+    type: DataTypes.DATE,
+    defaultValue: Sequelize.NOW,
+    field: 'created_on'
   }
 })
+
+// sequelize.sync({
+//   force: true
+// });

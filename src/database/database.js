@@ -2,7 +2,6 @@ import { Sequelize } from "sequelize";
 import * as dotenv from 'dotenv';
 dotenv.config()
 
-console.log(process.env)
 
 export const sequelize = new Sequelize(
   process.env.DB_NAME,
@@ -10,6 +9,11 @@ export const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
-    dialect: process.env.DB_DIALECT
-  }
+    dialect: process.env.DB_DIALECT,
+    define: {
+      timestamps: false
+    }
+  }, 
 );
+
+// sequelize.sync({force: true})

@@ -1,19 +1,13 @@
 import { DataTypes, Sequelize } from "sequelize";
 import { sequelize } from "../database/database.js";
 
-export const Proyect = sequelize.define('proyects', {
+export const Role = sequelize.define('role', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  name: {
-    type: DataTypes.STRING
-  },
-  priority: {
-    type: DataTypes.STRING
-  },
-  description: {
+  role: {
     type: DataTypes.STRING
   },
   createdOn: {
@@ -26,4 +20,3 @@ export const Proyect = sequelize.define('proyects', {
 // sequelize.sync({
 //   force: true
 // });
-
