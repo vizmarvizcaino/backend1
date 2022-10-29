@@ -12,6 +12,13 @@ export const register = async (req, res) => {
       });
     }
 
+
+    if (req.body.email === '' || req.body.password === '' || req.body.name === '') {
+      return res.status(400).send({
+        message: "email, password and name are required"
+      });
+    }
+
     if (req.body.password.length < 6) {
       return res.status(400).send({
         message: "password must be at least 6 characters"
@@ -60,7 +67,7 @@ export const login = async (req, res) => { //consulta con el correo si ese usuar
       req.body.password, //se compara la clave que el usuario ingreso con la de la base de datos
       user.password
     );
-  
+      
     // checking if password was valid and send response accordingly
     if (!passwordIsValid) {
       return res.status(401)

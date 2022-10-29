@@ -44,6 +44,17 @@ describe('Test the auth endpoints', () => {
     expect(body.message).contains('password must be at least 6 characters');
   });
 
+  it('should return 400 if password or email or name  is equal ""', async () => {
+    const payload = {
+      'name': '',
+      'email': '',
+      'password': ''
+    }
+    const { body, status } = await request(app).post('/auth/register').send(payload);
+    expect(status).to.equal(400);
+    expect(body.message).contains('email, password and name are required');
+  });
+
   it('should return 400 if email does not have an @ character', async () => {
     const payload = {
       'name': 'teast',
