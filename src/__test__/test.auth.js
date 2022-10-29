@@ -65,6 +65,5 @@ describe('Test the auth endpoints', () => {
     expect(status).to.equal(400);
     expect(body.message).contains('email must contain @ character');
   });
-
   
 });
