@@ -66,41 +66,5 @@ describe('Test the auth endpoints', () => {
     expect(body.message).contains('email must contain @ character');
   });
 
-  it('should allow to login', async () => {
-    const payload = {
-      'email': 'josae@email.com',
-      'password': '123456'
-    }
-    const { body, status } = await request(app)
-      .post('/auth/login')
-      .type("json")
-      .send(payload);
-    expect(status).to.equal(200);
-  });
-
-  it("should fail if email is not incorrect", async () => {
-    const payload = {
-      'email': 'unexsitedEmail@email.com',
-      'password': '123456'
-    }
-    const { body, status } = await request(app)
-      .post('/auth/login')
-      .type("json")
-      .send(payload);
-    expect(status).to.equal(404);
-    expect(body.message).contains('No user found with email');
-  });
-
-  it("should fail if password is not incorrect", async () => {
-    const payload = {
-      'email': 'josae@email.com',
-      'password': 'badPassword'
-    }
-    const { body, status } = await request(app)
-      .post('/auth/login')
-      .type("json")
-      .send(payload);
-    expect(status).to.equal(401);
-    expect(body.message).contains('Invalid Password');
-  });
+  
 });
