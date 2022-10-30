@@ -9,8 +9,8 @@
   "test": {
     "username": "postgres",
     "password": "69720700",
-    "database": "ci_test",
-    "host": "localhost",
+    "database": "proyectsdb",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
