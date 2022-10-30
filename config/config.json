@@ -11,6 +11,7 @@
     "password": "69720700",
     "database": "proyectsdb",
     "host": "127.0.0.1",
+    "logging": false,
     "dialect": "postgres"
   },
   "production": {
@@ -18,6 +19,8 @@
     "password": 69720700,
     "database": "ci_test",
     "host": "localhost",
+    "logging": false,
     "dialect": "postgres"
+    
   }
 }
