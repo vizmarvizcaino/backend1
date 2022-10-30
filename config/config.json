@@ -8,8 +8,8 @@
   },
   "test": {
     "username": "postgres",
-    "password": "69720700",
-    "database": "proyectsdb",
+    "password": 69720700,
+    "database": "ci_test",
     "host": "localhost",
     "dialect": "postgres"
   },
