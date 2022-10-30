@@ -17,7 +17,7 @@ describe('Test the auth endpoints', () => {
     const { body, status } = await request(app).post('/auth/register').send(payload);
     expect(status).to.equal(201);
 
-    // check the userId
+    // check the userid
     expect(body).to.have.property('userId');
     const userId = body.userId;
     const user = await User.findByPk(userId);
