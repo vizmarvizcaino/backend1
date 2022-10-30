@@ -3,3 +3,7 @@ node_modules
 
 # variables de entorno
 .env
+
+test.js
+testa.js
+src
