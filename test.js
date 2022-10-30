@@ -103,4 +103,5 @@ describe('Test the auth endpoints', () => {
     expect(status).to.equal(401);
     expect(body.message).contains('Invalid Password');
   });
+  
 });

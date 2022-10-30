@@ -8,16 +8,19 @@
   },
   "test": {
     "username": "postgres",
-    "password": "69720700",
+    "password": 69720700,
     "database": "proyectsdb",
-    "host": "localhost",
+    "host": "127.0.0.1",
+    "logging": false,
     "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "postgres",
+    "password": 69720700,
+    "database": "ci_test",
     "host": "localhost",
+    "logging": false,
     "dialect": "postgres"
+    
   }
 }
