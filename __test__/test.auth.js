@@ -1,7 +1,7 @@
 import request from 'supertest';
 import chai from 'chai';
-import app from '../app.js';
-import { User } from '../models/User.js';
+import app from '../src/app.js';
+import { User } from '../src/models/User.js';
 
 const { expect } = chai;
 
