@@ -8,7 +8,7 @@
   },
   "test": {
     "username": "postgres",
-    "password": "DB_PASSWORD=69720700",
+    "password": "cross-env DB_PASSWORD=69720700",
     "database": "proyects",
     "host": "127.0.0.1",
     "logging": false,
