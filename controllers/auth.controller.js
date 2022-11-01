@@ -41,7 +41,7 @@ export const register = async (req, res) => {
     });
     res.status(201).json({
       "message": "User Created",
-      "userId": user.Id
+      "userId": user.id
     });
   } catch (err) {
     console.log(err);
