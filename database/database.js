@@ -6,19 +6,21 @@ import _config from "../config/config.js";
 
 const env = process.env.ENV;
 const config = _config[env];
-const { DATABASE_URL } = process.env
 
 // create connection
-const secuelize = new Sequelize(DATABASE_URL,
+const secuelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password,
   {
-    logging: false,
-    native: false,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false
-      }
+    host: config.host,
+    dialect: 'postgres',
+    logging: config.logging,
+    define: {
+      timestamps: false
     }
-  });
+  },
+  
+);
 
 export default secuelize;
