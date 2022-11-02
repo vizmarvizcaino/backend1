@@ -13,11 +13,7 @@ jobs:
         image: postgres
         env:
           POSTGRES_USER: postgres
-<<<<<<< HEAD
-          POSTGRES_PASSWORD: "69720700"
-=======
           POSTGRES_PASSWORD: 69720700
->>>>>>> 5e5e75573b1bba94ead837af0d11fac0f93b0b8a
           POSTGRES_DB: proyects
         options: >-
           --health-cmd pg_isready
