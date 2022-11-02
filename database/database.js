@@ -1,9 +1,9 @@
 import { Sequelize } from "sequelize";
+import _config from "../config/config.js";
 import * as dotenv from 'dotenv';
 dotenv.config()
-import _config from "../config/config.js";
 
-
+console.log('database',process.env)
 const env = process.env.ENV;
 const config = _config[env];
 
