@@ -3,17 +3,16 @@ import * as dotenv from 'dotenv';
 dotenv.config()
 import _config from "../config/config.js";
 
-console.log('database',process.env)
 const env = process.env.ENV;
 const config = _config[env];
 
 // create connection
 const secuelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
+  config.database || 'proyectdb',
+  config.username || 'postgres',
+  config.password || '69720700',
   {
-    host: config.host,
+    host: config.host || 'localhost',
     dialect: 'postgres',
     logging: config.logging,
     ssl: true,
