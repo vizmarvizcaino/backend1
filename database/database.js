@@ -1,7 +1,4 @@
 import { Sequelize } from "sequelize";
-
-
-
 import * as dotenv from 'dotenv';
 dotenv.config()
 import _config from "../config/config.js";

@@ -10,8 +10,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config()
 
-console.log('aquii', process.env)
-
 const config = {
   development: {
     username: process.env.DB_DEV_USER,
