@@ -77,6 +77,5 @@ export const getProyectTasks = async (req, res) => {
   const tasks = await Task.findAll({
     where: { proyect_id: id }
   });
-  console.log(tasks)
   res.json(tasks)
 }
