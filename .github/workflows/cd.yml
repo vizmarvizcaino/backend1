@@ -22,7 +22,7 @@ jobs:
             - 5432:5432
 
   deploy:
-    needs: [test]
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
