@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node .",
     "dev": "nodemon src/index.js",
     "test": "cross-env ENV=test mocha ./__test__/* --timeout 10000 --verbose",
     "pretest": "cross-env NODE_ENV=test npm run db:reset",
