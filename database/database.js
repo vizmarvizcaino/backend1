@@ -1,19 +1,29 @@
 import { Sequelize } from "sequelize";
+
+
+
 import * as dotenv from 'dotenv';
 dotenv.config()
+import _config from "../config/config.js";
 
 
-export const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+const env = process.env.ENV;
+const config = _config[env];
+
+// create connection
+const secuelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password,
   {
-    host: process.env.DB_HOST,
+    host: config.host,
     dialect: 'postgres',
+    logging: config.logging,
     define: {
       timestamps: false
     }
-  }, 
+  },
+  
 );
 
-// sequelize.sync({force: true})
+export default secuelize;

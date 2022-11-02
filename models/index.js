@@ -1,38 +1,44 @@
-'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const process = require('process');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
+import database from "../config/config.js";
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import Sequelize from 'sequelize';
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
+const models = {};
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+const basename = path.basename(filename);
 
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+const config = database[process.env.ENV];
+
+const sequelize = new Sequelize(
+  config.database,
+  config.username,
+  config.password ,
+  {
+    host: config.host,
+    dialect: 'postgres',
   }
-});
+);
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+(async () => {
+  const files = fs
+    .readdirSync(dirname)
+    .filter((file) => (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js'));
+  
+  await Promise.all(files.map(async (file) => {
+    const module = await import(path.join(dirname, file));
+    const model = new module.default(sequelize, Sequelize.DataTypes);
+    models[model.name] = model;
+  }));
 
-module.exports = db;
+  Object.keys(models).forEach((modelName) => {
+    if (models[modelName].associate) {
+      models[modelName].associate(models);
+    }
+  });
+})();
+
+export default { models, sequelize, Sequelize };

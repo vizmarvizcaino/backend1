@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 import * as dotenv from 'dotenv';
 dotenv.config()
 
+console.log('acutual', process.env)
+
 export const isUserAuthenticated = (req, res, next) => {
   const authHeader = req.headers.authorization
 
