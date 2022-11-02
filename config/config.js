@@ -1,12 +1,3 @@
-
-// function runDotEnv() {
-//   if (process.env.ENV === 'development') {
-//     import('dotenv').then(dotenv => dotenv.config({ path: '.env' }));
-//   }
-// }
-
-// runDotEnv();
-
 import * as dotenv from 'dotenv';
 dotenv.config()
 
