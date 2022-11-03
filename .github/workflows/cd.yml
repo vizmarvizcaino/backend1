@@ -46,10 +46,10 @@ jobs:
           url: ${{ secrets.RENDER_HOOK }}
           method: 'GET'
       
-      - name: Wait for Render Deployment
-        uses: bounceapp/render-action@0.2.0
-        with:
-          email: vizmar.vizcaino@gmail.com
-          password: 69720700junior
-          token: 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
-          service-id: srv-cdhstiha6gdsnlmm3do0
+      # - name: Wait for Render Deployment
+      #   uses: bounceapp/render-action@0.2.0
+      #   with:
+      #     email: vizmar.vizcaino@gmail.com
+      #     password: 69720700junior
+      #     token: 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
+      #     service-id: srv-cdhstiha6gdsnlmm3do0
