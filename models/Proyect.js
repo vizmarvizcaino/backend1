@@ -23,7 +23,4 @@ export const Proyect = sequelize.define('proyects', {
   }
 });
 
-// sequelize.sync({
-//   force: true
-// });
 

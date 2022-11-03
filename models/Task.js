@@ -22,6 +22,3 @@ export const Task = sequelize.define('task', {
   }
 })
 
-// sequelize.sync({
-//   force: true
-// });
