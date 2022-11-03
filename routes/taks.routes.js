@@ -8,7 +8,7 @@ import { isUserAuthenticated } from "../middleware/auth.middleware.js";
 const router = Router()
 
 // Con esta ruta traemos todas las tareas
-router.get('/tasks',[isUserAuthenticated],getTasks);
+router.get('/tasks',getTasks);
 
 // Con esta ruta creamos las tareas
 router.post('/task',[isUserAuthenticated],createTask);
@@ -20,6 +20,6 @@ router.put('/task/:id',[isUserAuthenticated],updateTask);
 router.delete('/task/:id',[isUserAuthenticated],deleteTask);
 
 // Con esta ruta traemos una tarea
-router.get('/task/:id',[isUserAuthenticated],getTask);
+router.get('/task/:id',getTask);
 
 export default router;
