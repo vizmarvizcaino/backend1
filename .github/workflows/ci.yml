@@ -4,12 +4,6 @@ on:
     branches: [ main ]
 
 jobs:
-  # linting - analisis de código estatico 
-  # analisis de ciber seguridad
-  # code smells sonarcube 
-  # checkear que se pueda hacer build
-  # subir builds de docker
-  # notificar a otros lugares 
   test:
     runs-on: ubuntu-latest
     services:
