@@ -31,10 +31,10 @@ jobs:
           url: ${{ secrets.RENDER_HOOK }}
           method: 'GET'
 
-      - name: Wait for Render Deployment
-        uses: bounceapp/render-action@0.2.0
-        with:
-          email: ${{ secrets.RENDER_EMAIL }}
-          password: ${{ secrets.RENDER_PASSWORD }}
-          token: ${{ secrets.TOKEN_GITHUB }}
-          service-id: ${{ secrets.RENDER_ID }}
+      # - name: Wait for Render Deployment
+      #   uses: bounceapp/render-action@0.2.0
+      #   with:
+      #     email: ${{ secrets.RENDER_EMAIL }}
+      #     password: ${{ secrets.RENDER_PASSWORD }}
+      #     token: ${{ secrets.TOKEN_GITHUB }}
+      #     service-id: ${{ secrets.RENDER_ID }}
