@@ -51,5 +51,5 @@ jobs:
         with:
           email: vizmar.vizcaino@gmail.com
           password: 69720700junior
-          token: ${{ secrets.TOKEN_RENDER }}
+          token: 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
           service-id: srv-cdhstiha6gdsnlmm3do0
