@@ -1,4 +1,4 @@
-name: Express.js CI
+name: Express.js CD
 on:
   push:
     branches: [ main ]
@@ -12,9 +12,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: ${{ secrets.USER_NAME_POSTGRES }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          POSTGRES_DB: ${{ secrets.USER_NAMEDB_POSTGRES }}
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 69720700
+          POSTGRES_DB: proyect
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -37,13 +37,4 @@ jobs:
       - name: testing our app
         run: npm test
 
-   deploy:
-    needs: [test]
-    name: Wait for Deploy
-    runs-on: ubuntu-18.04
-    steps:
-      - name: call render webhook
-        uses: fjogeleit/http-request-action@v1
-        with:
-          url: https://api.render.com/deploy/srv-cdhstiha6gdsnlmm3do0?key=FX70mcduunw
-          method: 'GET'
+   
