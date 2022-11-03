@@ -5,7 +5,7 @@ import { Task } from '../models/Task.js'
 export const getProyects = async (req, res) => {
   try {
     const proyects = await Proyect.findAll();
-    res.json('estos son los proyectos')
+    res.json(proyects)
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }
@@ -17,7 +17,7 @@ export const getProyect = async (req, res) => {
     const { id } = req.params
     const proyect = await Proyect.findByPk(id)
     if (!proyect)
-      return res.status(404).json({ message: "poyect no existe" })
+      return res.status(404).json({ message: error.message })
     res.json(proyect)
   } catch (error) {
     return res.status(500).json({ message: error.message })
