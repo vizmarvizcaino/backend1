@@ -10,9 +10,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: 69720700
-          POSTGRES_DB: proyects
+          POSTGRES_USER: ${{ secrets.USER_NAME_POSTGRES }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.USER_NAMEDB_POSTGRES }}
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -20,28 +20,21 @@ jobs:
           --health-retries 5
         ports:
             - 5432:5432
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: "16.17"
-        
-      - name: Installing Dependencies
-        run: npm i
-
-      - name: testing our app
-        run: npm test
-        
   deploy:
-    needs: test
-    runs-on: ubuntu-latest
+    needs: [test]
+    name: Wait for Deploy
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
+      - name: call render webhook
+        uses: fjogeleit/http-request-action@v1
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "portfolio-vizmar"
-          heroku_email: "gatome2000@hotmail.com"
+          url: ${{ secrets.RENDER_HOOK }}
+          method: 'GET'
+
+      - name: Wait for Render Deployment
+        uses: bounceapp/render-action@0.2.0
+        with:
+          email: ${{ secrets.RENDER_EMAIL }}
+          password: ${{ secrets.RENDER_PASSWORD }}
+          token: ${{ secrets.TOKEN_GITHUB }}
+          service-id: ${{ secrets.RENDER_ID }}
