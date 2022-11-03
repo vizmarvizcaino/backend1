@@ -5,7 +5,7 @@ import { Task } from '../models/Task.js'
 export const getProyects = async (req, res) => {
   try {
     const proyects = await Proyect.findAll();
-    res.json(proyects)
+    res.json('estos son los proyectos')
   } catch (error) {
     return res.status(500).json({ message: error.message })
   }
