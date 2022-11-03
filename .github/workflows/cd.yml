@@ -1,0 +1,40 @@
+name: Express.js CD
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 69720700
+          POSTGRES_DB: proyect
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+            - 5432:5432
+  deploy:
+    needs: [test]
+    name: Wait for Deploy
+    runs-on: ubuntu-18.04
+    steps:
+      - name: call render webhook
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.RENDER_HOOK }}
+          method: 'GET'
+
+      - name: Wait for Render Deployment
+        uses: bounceapp/render-action@0.2.0
+        with:
+          email: ${{ secrets.RENDER_EMAIL }}
+          password: ${{ secrets.RENDER_PASSWORD }}
+          token: ${{ secrets.TOKEN_GITHUB }}
+          service-id: ${{ secrets.RENDER_ID }}
