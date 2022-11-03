@@ -52,4 +52,4 @@ jobs:
           email: ${{ secrets.RENDER_EMAIL }}
           password: ${{ secrets.RENDER_PASSWORD }}
           token: ${{ secrets.TOKEN_GITHUB }}
-          service-id: ${{ secrets.RENDER_ID }}
+          service-id: srv-cdhstiha6gdsnlmm3do0
