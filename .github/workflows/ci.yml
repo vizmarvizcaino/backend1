@@ -16,9 +16,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: larnu
-          POSTGRES_PASSWORD: larnuisgold
-          POSTGRES_DB: larnu_demo_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 69720700
+          POSTGRES_DB: proyect
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
