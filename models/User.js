@@ -33,20 +33,3 @@ export const User = sequelize.define('user', {
   }
 });
 
-// User.belongsTo(Role, {
-//   foreignKey: {
-//     allowNull: false,
-//     field: 'role_id'
-//   },
-//   onDelete: 'CASCADE'
-// });
-
-// Role.hasMany(User, {
-//   onDelete: 'CASCADE',
-// });
-
-// sequelize.sync({
-//     force: true
-// });
-
-// npx sequelize-cli db:migrate:undo:all 
