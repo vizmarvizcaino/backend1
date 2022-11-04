@@ -1,6 +1,5 @@
 FROM node:17.9.1-slim
 
-
 WORKDIR /usr/src/app
 
 COPY package*.json ./
