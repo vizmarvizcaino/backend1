@@ -8,14 +8,13 @@ const config = _config[env];
 
 // create connection
 const secuelize = new Sequelize(
-  config.database || 'proyectdb',
-  config.username || 'postgres',
-  config.password || '69720700',
+  config.database,
+  config.username,
+  config.password,
   {
-    host: config.host || 'localhost',
+    host: config.host,
     dialect: 'postgres',
     logging: config.logging,
-    ssl: true,
     define: {
       timestamps: false
     }
