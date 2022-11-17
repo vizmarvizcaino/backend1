@@ -24,6 +24,8 @@ export const getProyect = async (req, res) => {
   }
 }
 
+
+
 // Con esta funcion creamos un proyectos
 export const createProyect = async (req, res) => {
   try {
