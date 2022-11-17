@@ -3,7 +3,7 @@ import { User } from "../models/User.js";
 import bcrypt from 'bcryptjs';
 import * as dotenv from 'dotenv';
 dotenv.config()
-//2 endpoint que permite el registro
+
 export const register = async (req, res) => {
   try {
     if (!req.body.email || !req.body.password || !req.body.name) {
