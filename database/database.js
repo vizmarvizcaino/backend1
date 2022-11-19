@@ -19,7 +19,7 @@ const secuelize = new Sequelize(
       timestamps: false
     }
   },
-  
+
 );
 
 export default secuelize;

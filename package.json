@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon src/index.js",
-    "test": "cross-env ENV=test mocha ./__test__/* --timeout 10000 --verbose",
+    "test": "npm run pretest",
     "pretest": "cross-env NODE_ENV=test npm run db:reset",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create"
@@ -19,6 +19,7 @@
     "@types/bcryptjs": "^2.4.2",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",

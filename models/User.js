@@ -1,29 +1,31 @@
-import { DataTypes, Sequelize  } from "sequelize";
-import  sequelize from "../database/database.js";
-import { Role } from "../models/Role.js";
+import { DataTypes, Sequelize } from "sequelize";
+import sequelize from "../database/database.js";
 
-export const User = sequelize.define('user', {
+export const User = sequelize.define('users', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  name: {
+  nombres: {
     type: DataTypes.STRING
   },
-  lastName: {
+  apellidos: {
     type: DataTypes.STRING
   },
-  email: {
+  telefono: {
     type: DataTypes.STRING
   },
-  ocupation: {
+  grado: {
     type: DataTypes.STRING
   },
-  address: {
+  materia: {
     type: DataTypes.STRING
   },
-  password: {
+  nota: {
+    type: DataTypes.STRING
+  },
+  salon: {
     type: DataTypes.STRING
   },
   createdOn: {
@@ -32,4 +34,5 @@ export const User = sequelize.define('user', {
     field: 'created_on'
   }
 });
+
 

@@ -1,16 +1,17 @@
 import express from 'express';
-import proyectsRoute  from './routes/proyects.routes.js'
-import taskRoute  from './routes/taks.routes.js'
-import authRoute from './routes/auth.routes.js'
+import cors from 'cors'
+import usersRoute  from './routes/user.routes.js'
 
 const app = express();
 
 // Middlewares
 app.use(express.json())
 
-app.use(proyectsRoute)
-app.use(taskRoute)
-app.use(authRoute)
+app.use(usersRoute)
 
+app.use(cors({
+    origin: "http://localhost:4000/",
+    methods:["GET","POST"]
+}));
 
 export default app;
