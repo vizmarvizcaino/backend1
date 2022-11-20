@@ -1,6 +1,6 @@
 name: Express.js CI
 on:
-  push:
+  pull_request:
     branches: [ main ]
 
 jobs:
@@ -10,9 +10,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: proyectdb
-          POSTGRES_DB: 69720700
+          POSTGRES_USER: ${{ secrets.USER_NAME_POSTGRES }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.USER_NAMEDB_POSTGRES }}
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -24,5 +24,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - uses: actions/checkout@v2
-   
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.17"
+        
+      - name: Installing Dependencies
+        run: npm i
+
+      - name: testing our app
+        run: npm test
