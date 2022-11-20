@@ -3,9 +3,8 @@ import sequelize from "../database/database.js";
 
 export const User = sequelize.define('users', {
   id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
+    type: DataTypes.STRING,
+    primaryKey: true
   },
   nombres: {
     type: DataTypes.STRING
