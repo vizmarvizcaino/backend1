@@ -1,0 +1,21 @@
+{
+    "env": {
+        "node": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "overrides": [
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "indent": ["error", 2],
+        "complexity": ["error", 8],
+        "semi": [2, "always"],
+        "no-unused-vars" : 2,
+        "no-undef" : 2
+    }
+}

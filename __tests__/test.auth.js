@@ -10,23 +10,23 @@ describe('Test the auth endpoints', () => {
 
   it('should allow to create users', async () => {
     const payload = {
-        "listUser":[
+      "listUser":[
         {
-            "id": "12345aeiou",
-            "nombres": "vizmar",
-            "apellidos": "vizcaino",
-            "telefono": "3177047875"
+          "id": "12345aeiou",
+          "nombres": "vizmar",
+          "apellidos": "vizcaino",
+          "telefono": "3177047875"
         }
-        ],
-        "listAcademics":[
+      ],
+      "listAcademics":[
         {
-            "grado": "2",
-            "materia": "naturales",
-            "nota": "10",
-            "salon": "604"
+          "grado": "2",
+          "materia": "naturales",
+          "nota": "10",
+          "salon": "604"
         }
-        ]
-    }
+      ]
+    };
     const { body, status } = await request(app).post('/user').send(payload);
     expect(status).to.equal(201);
     // check the userId
@@ -36,72 +36,43 @@ describe('Test the auth endpoints', () => {
     expect(user.nombres).to.equal(payload.listUser[0].nombres);
   });
 
-  // it('should return 400 if payload is incomplete', async () => {
-  //   const payload = {
-  //     'name': 'teast',
-  //     'password': '123456'
-  //   }
-  //   const { status } = await request(app).post('/auth/register').send(payload);
-  //   expect(status).to.equal(400);
-  // });
+  it('should return 400 if listuser is incomplete', async () => {
+    const payload = {
+      "listUser":[
+        {
+          "id": "12345aeiou",
+          "nombres": "vizmar",
+          "apellidos": "vizcaino"
+        }
+      ]
+    };
+    const { status } = await request(app).post('/user').send(payload);
+    expect(status).to.equal(400);
+  });
 
-  // it('should return 400 if password is shorter than 6 characters', async () => {
-  //   const payload = {
-  //     'name': 'teast',
-  //     'email': 'josa123e@email.com',
-  //     'password': '12345'
-  //   }
-  //   const { body, status } = await request(app).post('/auth/register').send(payload);
-  //   expect(status).to.equal(400);
-  //   expect(body.message).contains('password must be at least 6 characters');
-  // });
+  it('should return 400 if password is shorter than 3 characters', async () => {
+    const payload = {
+      "listUser":[
+        {
+          "id": "12345aeiou",
+          "nombres": "vi",
+          "apellidos": "vizcaino",
+          "telefono": "3177047875"
+        }
+      ],
+      "listAcademics":[
+        {
+          "grado": "2",
+          "materia": "naturales",
+          "nota": "10",
+          "salon": "604"
+        }
+      ]
+    };
+    const { body, status } = await request(app).post('/user').send(payload);
+    expect(status).to.equal(400);
+    expect(body.message).contains('the name, last name, and telephone must have at least 3 characters');
+  });
 
-  // it('should return 400 if email does not have an @ character', async () => {
-  //   const payload = {
-  //     'name': 'teast',
-  //     'email': 'josa123e.email.com',
-  //     'password': '12345123123'
-  //   }
-  //   const { body, status } = await request(app).post('/auth/register').send(payload);
-  //   expect(status).to.equal(400);
-  //   expect(body.message).contains('email must contain @ character');
-  // });
-
-  // it('should allow to login', async () => {
-  //   const payload = {
-  //     'email': 'josae@email.com',
-  //     'password': '123456'
-  //   }
-  //   const { body, status } = await request(app)
-  //     .post('/auth/login')
-  //     .type("json")
-  //     .send(payload);
-  //   expect(status).to.equal(200);
-  // });
-
-  // it("should fail if email is not incorrect", async () => {
-  //   const payload = {
-  //     'email': 'unexsitedEmail@email.com',
-  //     'password': '123456'
-  //   }
-  //   const { body, status } = await request(app)
-  //     .post('/auth/login')
-  //     .type("json")
-  //     .send(payload);
-  //   expect(status).to.equal(404);
-  //   expect(body.message).contains('No user found with email');
-  // });
-
-  // it("should fail if password is not incorrect", async () => {
-  //   const payload = {
-  //     'email': 'josae@email.com',
-  //     'password': 'badPassword'
-  //   }
-  //   const { body, status } = await request(app)
-  //     .post('/auth/login')
-  //     .type("json")
-  //     .send(payload);
-  //   expect(status).to.equal(401);
-  //   expect(body.message).contains('Invalid Password');
-  // });
+ 
 });

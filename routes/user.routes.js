@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { createUser, getUsers } from "../controllers/user.controller.js";
 
-const router = Router()
+const router = Router();
 
 // Con esta ruta traemos todos los proyectos
 router.get('/users',getUsers);
